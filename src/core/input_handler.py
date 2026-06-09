@@ -44,6 +44,7 @@ class InputHandler:
             "move_up": "UP", "move_down": "DOWN",
             "move_left": "LEFT", "move_right": "RIGHT",
             "pause": "SPACE", "quit": "ESCAPE",
+            "confirm": "ENTER",
         }
         merged = {**defaults, **controls}
         self._key_to_action.clear()

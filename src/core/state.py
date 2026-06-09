@@ -74,8 +74,13 @@ WINDOW_HEIGHT = GAME_HEIGHT               # 500px
 FPS = 60
 
 # ===== 游戏参数常量 =====
-INITIAL_SPEED = 8         # 初始速度（步/秒）
+INITIAL_SPEED = 8         # 初始速度（步/秒），仅作为回退默认值
 MAX_SPEED = 20            # 最大速度
 INITIAL_LIVES = 3         # 初始生命数
 SPEED_INCREMENT = 1       # 每级速度增量
 SCORE_PER_LEVEL = 50      # 每多少分升级
+
+# ===== 速度档位（用户可选） =====
+SPEED_PRESETS: dict[str, int] = {"慢速": 4, "普通": 6, "快速": 10}
+SPEED_PRESET_NAMES: list[str] = list(SPEED_PRESETS.keys())
+DEFAULT_SPEED_PRESET = "普通"

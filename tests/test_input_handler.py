@@ -26,3 +26,17 @@ def test_unknown_key_returns_none():
     handler = InputHandler()
     action = handler.get_action(99999)
     assert action is None
+
+
+def test_confirm_key_mapping():
+    """测试回车键映射为 CONFIRM 动作"""
+    import pygame
+    handler = InputHandler()
+    assert handler.get_action(pygame.K_RETURN) == GameAction.CONFIRM
+
+
+def test_confirm_in_custom_controls():
+    """测试自定义配置中 CONFIRM 映射可覆盖"""
+    import pygame
+    handler = InputHandler({"confirm": "SPACE"})
+    assert handler.get_action(pygame.K_SPACE) == GameAction.CONFIRM

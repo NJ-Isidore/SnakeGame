@@ -2,7 +2,7 @@
 import json
 import os
 from dataclasses import dataclass, field
-from src.core.state import GRID_COLS, GRID_ROWS, CELL_SIZE
+from src.core.state import GRID_COLS, GRID_ROWS, CELL_SIZE, DEFAULT_SPEED_PRESET
 
 DEFAULT_CONFIG_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
@@ -16,6 +16,7 @@ DEFAULT_CONTROLS: dict[str, str] = {
     "move_right": "RIGHT",
     "pause": "SPACE",
     "quit": "ESCAPE",
+    "confirm": "ENTER",
 }
 
 
@@ -31,6 +32,7 @@ class GameConfig:
     current_skin: str = "classic"
     sound_enabled: bool = True
     sound_volume: float = 0.5
+    speed_preset: str = DEFAULT_SPEED_PRESET
     controls: dict[str, str] = field(default_factory=lambda: dict(DEFAULT_CONTROLS))
     _config_path: str = field(default=DEFAULT_CONFIG_PATH, repr=False)
 
@@ -45,6 +47,7 @@ class GameConfig:
             "current_skin": self.current_skin,
             "sound_enabled": self.sound_enabled,
             "sound_volume": self.sound_volume,
+            "speed_preset": self.speed_preset,
             "controls": self.controls,
         }
         os.makedirs(os.path.dirname(self._config_path), exist_ok=True)
@@ -61,6 +64,7 @@ class GameConfig:
             self.current_skin = data.get("current_skin", self.current_skin)
             self.sound_enabled = data.get("sound_enabled", self.sound_enabled)
             self.sound_volume = data.get("sound_volume", self.sound_volume)
+            self.speed_preset = data.get("speed_preset", self.speed_preset)
             saved_controls = data.get("controls", {})
             self.controls.update(saved_controls)
         except (json.JSONDecodeError, OSError):

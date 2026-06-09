@@ -4,7 +4,7 @@ import pygame
 from src.core.state import (
     Direction, GameAction, GameState, FoodType,
     GAME_WIDTH, GAME_HEIGHT, WINDOW_WIDTH,
-    INITIAL_LIVES,
+    INITIAL_LIVES, INITIAL_SPEED, SPEED_PRESETS,
 )
 from src.ui.base_scene import BaseScene
 from src.entities.snake import Snake
@@ -42,7 +42,14 @@ class PlayScene(BaseScene):
             config.grid_cols, config.grid_rows
         )
         self._scoring = ScoringSystem()
-        self._difficulty = DifficultyManager()
+        # 从速度档位读取初始速度，回退到全局默认值
+        speed_value = SPEED_PRESETS.get(
+            config.speed_preset, INITIAL_SPEED
+        )
+        self._difficulty = DifficultyManager(
+            initial_speed=speed_value,
+            max_speed=config.max_speed,
+        )
 
         # 初始化游戏对象
         self._snake = Snake(

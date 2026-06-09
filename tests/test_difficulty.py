@@ -50,3 +50,20 @@ def test_apply_slow_effect():
     # 效果过期后恢复
     mgr.update_effects(current_time=6.0)
     assert mgr.speed == original_speed
+
+
+def test_custom_initial_speed():
+    """测试自定义初始速度（对应速度档位）"""
+    mgr = DifficultyManager(initial_speed=4)
+    assert mgr.speed == 4
+    # 升级后从自定义基数递增
+    mgr.check_level_up(score=50)
+    assert mgr.speed == 5
+
+
+def test_reset_restores_custom_initial_speed():
+    """测试重置恢复到自定义初始速度"""
+    mgr = DifficultyManager(initial_speed=6)
+    mgr.check_level_up(score=200)
+    mgr.reset()
+    assert mgr.speed == 6

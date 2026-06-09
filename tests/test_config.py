@@ -51,3 +51,34 @@ def test_load_missing_file_uses_defaults():
     config = GameConfig(config_path="/tmp/nonexistent_snake_config.json")
     assert config.current_skin == "classic"
     assert config.sound_enabled is True
+
+
+def test_default_speed_preset():
+    """测试默认速度档位为'普通'"""
+    config = GameConfig()
+    assert config.speed_preset == "普通"
+
+
+def test_save_and_load_speed_preset():
+    """测试速度档位保存和加载"""
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".json", delete=False
+    ) as f:
+        temp_path = f.name
+
+    try:
+        config = GameConfig(config_path=temp_path)
+        config.speed_preset = "慢速"
+        config.save()
+
+        loaded = GameConfig(config_path=temp_path)
+        assert loaded.speed_preset == "慢速"
+    finally:
+        os.unlink(temp_path)
+
+
+def test_default_controls_include_confirm():
+    """测试默认按键配置包含 CONFIRM"""
+    config = GameConfig()
+    assert "confirm" in config.controls
+    assert config.controls["confirm"] == "ENTER"
