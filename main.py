@@ -1,10 +1,13 @@
 """贪吃蛇游戏入口"""
+from src.core.config import GameConfig
+from src.core.engine import GameEngine
 
 
 def main():
     """启动游戏"""
-    # 将在 Task 17 中实现完整逻辑
-    print("贪吃蛇游戏 - 初始化中...")
+    config = GameConfig()
+    engine = GameEngine(config)
+    engine.run()
 
 
 if __name__ == "__main__":
