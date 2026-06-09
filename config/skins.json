@@ -1,0 +1,49 @@
+{
+  "skins": {
+    "classic": {
+      "name": "经典",
+      "background": [40, 40, 40],
+      "grid_line": [50, 50, 50],
+      "snake_head": [0, 200, 0],
+      "snake_body": [0, 155, 0],
+      "food_normal": [255, 0, 0],
+      "food_bonus": [255, 215, 0],
+      "food_slow": [100, 149, 237],
+      "food_growth": [255, 105, 180],
+      "obstacle": [139, 69, 19],
+      "ui_bg": [30, 30, 30],
+      "ui_text": [255, 255, 255],
+      "ui_highlight": [0, 200, 0]
+    },
+    "retro": {
+      "name": "复古",
+      "background": [0, 0, 0],
+      "grid_line": [20, 20, 20],
+      "snake_head": [0, 255, 0],
+      "snake_body": [0, 180, 0],
+      "food_normal": [255, 255, 255],
+      "food_bonus": [255, 255, 0],
+      "food_slow": [0, 255, 255],
+      "food_growth": [255, 0, 255],
+      "obstacle": [128, 128, 128],
+      "ui_bg": [10, 10, 10],
+      "ui_text": [0, 255, 0],
+      "ui_highlight": [0, 255, 0]
+    },
+    "neon": {
+      "name": "霓虹",
+      "background": [10, 10, 30],
+      "grid_line": [20, 20, 50],
+      "snake_head": [0, 255, 255],
+      "snake_body": [0, 200, 200],
+      "food_normal": [255, 0, 128],
+      "food_bonus": [255, 255, 0],
+      "food_slow": [128, 0, 255],
+      "food_growth": [0, 255, 128],
+      "obstacle": [255, 64, 64],
+      "ui_bg": [5, 5, 20],
+      "ui_text": [0, 255, 255],
+      "ui_highlight": [255, 0, 128]
+    }
+  }
+}
